@@ -242,8 +242,14 @@ The first three *Harry Potter* movies, *Sorcerer's Stone*, *Chamber of Secrets*,
 4. What is the highest budget for a movie that is an Animation or Comedy with at least 100 votes?
 
 ```{r}
-
+animation_comedy <- movies %>%
+  filter(votes > 100, !Animation == 0, !Comedy == 0) %>%
+    select(title, votes, budget) %>%
+      arrange(desc(budget))
+  
+animation_comedy
 ```
+The highest budget of any animation or comedy belongs to *Monsters, inc.* with a budget of 115 million dollars ($115000000).
 
 5. Is your favorite movie in the dataset? What other questions could you ask or answer using `filter()`, `select()`, and `arrange()`?
 
