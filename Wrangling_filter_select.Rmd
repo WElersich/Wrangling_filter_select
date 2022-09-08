@@ -202,14 +202,28 @@ See if you can answer these questions:
 1. How many movies were released in 1995?
 
 ```{r}
+movies_1995 <- movies %>%
+  
+ filter(year == 1995) %>%
+  select(title, year)
 
+movies_1995
+
+nrow(movies_1995)
 ```
+There were 1248 movies released in 1995.
 
 2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
 
 ```{r}
+long_highrated_comedies <- movies %>%
+  
+  filter(Comedy == 1, !mpaa == "", rating > 8, length > 120) %>%
+    select(title, year, rating, length, mpaa)
 
+long_highrated_comedies
 ```
+*Big Fish*, *Forrest Gump*, *O Homem Que Copiava*, and *The Incredibles* are the only four movies in the database that meet these conditions.
 
 3. Create a subset of only Harry Potter movies with the title, rating, budget, and votes. Which movies are included in this data? Which is highest rated? Which has the most votes on imdb.com?
 
