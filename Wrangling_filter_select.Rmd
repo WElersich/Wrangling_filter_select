@@ -243,20 +243,24 @@ The first three *Harry Potter* movies, *Sorcerer's Stone*, *Chamber of Secrets*,
 
 ```{r}
 animation_comedy <- movies %>%
-  filter(votes > 100, !Animation == 0, !Comedy == 0) %>%
-    select(title, votes, budget) %>%
+  filter(votes > 100, Animation == 1 | Comedy == 1) %>%
+    select(title, budget, votes) %>%
       arrange(desc(budget))
   
 animation_comedy
 ```
-The highest budget of any animation or comedy belongs to *Monsters, inc.* with a budget of 115 million dollars ($115000000).
+The highest budget of any animation or comedy belongs to *Wild Wild West* with a budget of 170 million dollars ($170000000).
 
 5. Is your favorite movie in the dataset? What other questions could you ask or answer using `filter()`, `select()`, and `arrange()`?
 
 ```{r}
+movies %>%
+  filter(str_detect(title, "Doctor Strangelove"))
 
+movies %>%
+  filter(str_detect(title, "How I learned to stop worrying and love the bomb"))
 ```
-
+Unfortunately, my favorite movie is not in the database. How disappointing. Any question concerning the data contained within the database can be answered through the use of `filter()`, `select()`, and `arrange()`.
 
 
 
